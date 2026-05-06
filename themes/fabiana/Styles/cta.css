@@ -1,87 +1,159 @@
 /* ==========================================================================
-   CTA — Clínica de Estética Catarino
+   CTA — Versão Premium
    ========================================================================== */
+
 .cta {
-  padding: var(--espacamento-2xl) var(--espacamento-md);
-  background: var(--cor-fundo-1);
-  color: var(--cor-texto);
-  text-align: center;
   position: relative;
+  padding: var(--espacamento-2xl) var(--espacamento-md);
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Glow decorativo suave */
+.cta::before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--cor-rosa) 0%, transparent 70%);
+  opacity: 0.15;
+  top: -100px;
+  left: -100px;
+  filter: blur(60px);
+}
+
+.cta::after {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, var(--cor-dourado) 0%, transparent 70%);
+  opacity: 0.12;
+  bottom: -120px;
+  right: -120px;
+  filter: blur(60px);
 }
 
 .cta__container {
   max-width: 900px;
   margin: 0 auto;
-  box-sizing: border-box;
-  padding: 0 var(--espacamento-md);
+  position: relative;
+  z-index: 2;
 }
 
 /* =========================
-   Título e descrição
+   HEADER
 ========================= */
+
+.cta__header {
+  margin-bottom: var(--espacamento-xl);
+}
+
 .cta__title {
   font-family: var(--fonte-titulo);
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 800;
-  margin-bottom: var(--espacamento-md);
   line-height: 1.2;
   color: var(--cor-rosa);
+
+  animation: fadeInUp 0.8s ease both;
 }
 
 .cta__title .highlight {
-  color: var(--cor-dourado);
-  font-style: italic;
+  background: linear-gradient(
+    90deg,
+    var(--cor-dourado),
+    var(--cor-rosa)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .cta__description {
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  margin-top: var(--espacamento-md);
+  font-family: var(--fonte-texto);
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
   color: var(--cor-texto-suave);
-  margin-bottom: var(--espacamento-xl);
-  line-height: 1.6;
-  max-width: 700px;
+  max-width: 650px;
   margin-inline: auto;
+  line-height: 1.6;
+
+  animation: fadeInUp 0.8s ease both 0.2s;
 }
 
 /* =========================
-   Botões
+   BOTÕES
 ========================= */
 .cta__actions {
+  margin-top: var(--espacamento-xl);
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   gap: var(--espacamento-md);
-}
+  flex-wrap: wrap;
 
-.cta__btn {
-  flex: 1 1 auto;
-  min-width: 220px;
-  max-width: 380px;
-  padding: 1rem 2rem;              /* ↑ aumentei top/bottom (1rem) e mantive lateral (2rem) */
-  border-radius: var(--radius-md);
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  font-weight: 600;
-  transition: var(--transicao-suave);
-  box-shadow: var(--sombra-sm);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  cursor: pointer;
+  width: 100%;
   box-sizing: border-box;
-  text-align: center;
 }
 
-/* Botão principal */
+/* BOTÃO CORRIGIDO */
+.cta__btn {
+  width: 100%;
+  max-width: 320px; /* impede de estourar */
+  
+  padding: 1rem 1.5rem;
+  border-radius: 999px;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  white-space: normal; /* permite quebrar linha */
+
+  box-sizing: border-box;
+}
+/* Efeito ripple suave */
+.cta__btn::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.cta__btn:active::after {
+  width: 200px;
+  height: 200px;
+}
+
+/* =========================
+   BOTÃO PRINCIPAL
+========================= */
+
 .cta__btn--main {
-  background: var(--cor-rosa);
+  background: linear-gradient(
+    135deg,
+    var(--cor-rosa),
+    var(--cor-rosa-hover)
+  );
   color: var(--cor-branco);
+  box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4);
 }
 
 .cta__btn--main:hover {
-  background: var(--cor-rosa-hover);
-  transform: translateY(-3px);
-  box-shadow: var(--sombra-md);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(255, 105, 180, 0.6);
 }
 
-/* Botão secundário */
+/* =========================
+   BOTÃO SECUNDÁRIO
+========================= */
+
 .cta__btn--secondary {
   background: transparent;
   border: 2px solid var(--cor-dourado);
@@ -91,76 +163,45 @@
 .cta__btn--secondary:hover {
   background: var(--cor-dourado);
   color: var(--cor-branco);
-  transform: translateY(-3px);
-  box-shadow: var(--sombra-md);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 10px 25px rgba(212, 175, 55, 0.4);
 }
 
 /* =========================
-   Responsividade
+   RESPONSIVO
 ========================= */
-@media (max-width: 1024px) {
-  .cta {
-    padding: var(--espacamento-xl) var(--espacamento-md);
-  }
-  .cta__title {
-    font-size: clamp(1.4rem, 4vw, 2rem);
-  }
-}
 
 @media (max-width: 768px) {
   .cta {
-    padding: var(--espacamento-lg) var(--espacamento-sm);
+    padding: var(--espacamento-xl) var(--espacamento-sm);
   }
+
   .cta__title {
-    font-size: clamp(1.2rem, 5vw, 1.6rem);
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
   }
-  .cta__description {
-    font-size: 0.95rem;
-  }
+
   .cta__actions {
     flex-direction: column;
-    gap: var(--espacamento-md);
+    align-items: center;
   }
+
   .cta__btn {
     width: 100%;
-    max-width: none;
-    font-size: 1rem;
-    padding: 1.2rem 2rem;          /* ↑ ainda mais alto em telas menores */
+    max-width: 320px;
   }
 }
 
 @media (max-width: 480px) {
   .cta {
-    padding: var(--espacamento-md) var(--espacamento-xs);
+    padding: var(--espacamento-lg) var(--espacamento-xs);
   }
-  .cta__title {
-    font-size: clamp(1.1rem, 6vw, 1.4rem);
-  }
+
   .cta__description {
     font-size: 0.9rem;
-    line-height: 1.4;
   }
-  .cta__btn {
-    font-size: 0.95rem;
-    padding: 1rem 1.5rem;          /* ↑ mantém altura confortável */
-    width: 100%;
-  }
-}
 
-@media (max-width: 340px) {
-  .cta {
-    padding: var(--espacamento-sm) var(--espacamento-xs);
-  }
-  .cta__title {
-    font-size: 1rem;
-  }
-  .cta__description {
-    font-size: 0.85rem;
-  }
   .cta__btn {
     font-size: 0.85rem;
-    padding: 0.9rem 1.2rem;        /* ↑ altura ajustada mesmo em telas muito pequenas */
-    letter-spacing: 0.02em;
-    width: 100%;
+    padding: 1rem 1.5rem;
   }
 }

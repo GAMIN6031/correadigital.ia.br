@@ -189,3 +189,126 @@
   font-weight: 600;
   box-shadow: var(--sombra-md);
 }
+/* ==========================================================================
+   📱 RESPONSIVO GLOBAL
+   ========================================================================== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .card-linktree {
+    max-width: 420px;
+    padding: var(--espacamento-lg);
+  }
+
+  .logo-wrapper {
+    width: 140px;
+    height: 140px;
+  }
+
+  .logo-img {
+    width: 130px;
+    height: 130px;
+  }
+
+  .studio-title {
+    font-size: 1.4rem;
+  }
+}
+
+/* Celulares médios */
+@media (max-width: 768px) {
+  .linktree-container {
+    padding: var(--espacamento-md);
+    padding-top: var(--espacamento-xl);
+    justify-content: flex-start; /* melhor UX no mobile */
+  }
+
+  .card-linktree {
+    max-width: 100%;
+    padding: var(--espacamento-lg) var(--espacamento-md);
+    border-radius: var(--radius-lg);
+  }
+
+  .logo-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+
+  .logo-img {
+    width: 110px;
+    height: 110px;
+  }
+
+  .studio-title {
+    font-size: 1.2rem;
+    white-space: normal; /* evita quebrar layout */
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .link {
+    height: 54px;
+    font-size: 0.95rem;
+  }
+
+  .btn-whatsapp-flutuante {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+  }
+}
+
+/* Celulares pequenos */
+@media (max-width: 480px) {
+  .linktree-container {
+    padding: 10px;
+  }
+
+  .card-linktree {
+    padding: 16px 12px;
+  }
+
+  .logo-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+
+  .logo-img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .studio-title {
+    font-size: 1rem;
+  }
+
+  .link {
+    height: 50px;
+    font-size: 0.9rem;
+    gap: 8px;
+  }
+
+  .toast-pix {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+}
+
+/* Telas muito pequenas */
+@media (max-width: 350px) {
+  .logo-wrapper {
+    width: 85px;
+    height: 85px;
+  }
+
+  .logo-img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .link {
+    height: 46px;
+    font-size: 0.8rem;
+  }
+}

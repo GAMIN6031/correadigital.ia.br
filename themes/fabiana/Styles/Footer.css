@@ -1,82 +1,65 @@
 /* ==========================================================================
-   FOOTER PRINCIPAL — Clínica de Estética Fabiana Catarino
+   🎬 FOOTER — CINEMA LEVEL (GSAP READY)
    ========================================================================== */
+
 .footer {
   font-family: var(--fonte-texto);
-  background: var(--gradiente-suave); /* gradiente nude + branco */
+  background: var(--gradiente-suave);
   border-top: 2px solid var(--cor-dourado);
   padding: var(--espacamento-xl) 0 var(--espacamento-lg);
   position: relative;
   overflow: hidden;
+
+  /* 🔥 Performance animação */
+  will-change: transform, opacity;
 }
 
-/* Linha decorativa superior */
+/* Linha animada topo */
 .footer::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0 0 auto 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--cor-dourado), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--cor-dourado),
+    transparent
+  );
+  opacity: 0.7;
 }
 
-/* =========================
-   CONTAINER & GRID
-========================= */
+/* ==========================================================================
+   CONTAINER
+   ========================================================================== */
+
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--espacamento-md);
 }
 
+/* ==========================================================================
+   GRID
+   ========================================================================== */
+
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: var(--espacamento-xl); /* mais espaçamento entre colunas */
+  gap: var(--espacamento-xl);
   margin-bottom: var(--espacamento-xl);
-  align-items: flex-start;
-  justify-items: flex-start;
 }
 
-/* =========================
-   TÍTULOS
-========================= */
-.footer-title-link {
-  font-family: var(--fonte-titulo);
-  font-size: clamp(1rem, 1vw, 1.1rem);
-  margin-bottom: var(--espacamento-md);
-  color: var(--cor-preto);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  position: relative;
-  display: inline-block;
-  transition: var(--transicao-suave);
+/* evita bugs com GSAP */
+.footer-column {
+  transform: translateZ(0);
+  min-width: 0;
 }
 
-.footer-title-link::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 35px;
-  height: 2px;
-  background: var(--cor-rosa);
-  border-radius: 2px;
-  transition: var(--transicao-suave);
-}
+/* ==========================================================================
+   LOGO
+   ========================================================================== */
 
-.footer-title-link:hover {
-  color: var(--cor-rosa-hover);
-}
-
-.footer-title-link:hover::after {
-  width: 55px;
-  background: var(--cor-dourado);
-}
-
-/* =========================
-   LOGO & SOBRE
-========================= */
 .footer-logo {
   display: flex;
   align-items: center;
@@ -94,31 +77,36 @@
 }
 
 .footer-logo img:hover {
-  transform: scale(1.05);
+  transform: scale(1.08) rotate(2deg);
 }
 
 .footer-logo h3 {
   font-family: var(--fonte-titulo);
-  font-size: 1.4rem;
-  color: var(--cor-preto);
+  font-size: 1.3rem;
   font-weight: 700;
+  color: var(--cor-preto);
 }
+
+/* ==========================================================================
+   DESCRIÇÃO
+   ========================================================================== */
 
 .footer-description {
-  color: var(--cor-texto-suave);
+  font-size: 0.95rem;
   line-height: 1.6;
-  font-size: 0.9rem;
+  color: var(--cor-texto-suave);
   max-width: 380px;
-  margin-top: var(--espacamento-sm);
 }
 
-/* =========================
+/* ==========================================================================
    SOCIAL
-========================= */
+   ========================================================================== */
+
 .footer-social {
   display: flex;
   gap: var(--espacamento-sm);
-  margin-top: var(--espacamento-sm);
+  margin-top: var(--espacamento-md);
+  flex-wrap: wrap;
 }
 
 .social-link {
@@ -132,74 +120,118 @@
   justify-content: center;
   font-size: 1.2rem;
   color: var(--cor-dourado);
-  transition: var(--transicao-suave);
+
+  transition: all 0.3s ease;
 }
 
 .social-link:hover {
-  transform: translateY(-4px) scale(1.05);
-  color: var(--cor-rosa-hover);
-  box-shadow: var(--sombra-sm);
+  transform: translateY(-5px) scale(1.1);
+  color: var(--cor-rosa);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
-/* =========================
-   LINKS & CONTATO
-========================= */
-.footer-links,
-.footer-contact-list {
+/* ==========================================================================
+   TÍTULOS
+   ========================================================================== */
+
+.footer-title {
+  font-family: var(--fonte-titulo);
+  font-size: 1.05rem;
+  margin-bottom: var(--espacamento-md);
+  color: var(--cor-preto);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.footer-title::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--cor-rosa);
+  margin-top: 6px;
+  transition: var(--transicao-suave);
+}
+
+.footer-column:hover .footer-title::after {
+  width: 60px;
+  background: var(--cor-dourado);
+}
+
+/* ==========================================================================
+   LINKS
+   ========================================================================== */
+
+.footer-links {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: var(--espacamento-sm);
-  margin: 1rem 0;
   padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.6rem;
 }
 
 .footer-links a {
   color: var(--cor-preto);
-  font-size: 0.9rem;
   text-decoration: none;
+  font-size: 0.95rem;
   transition: var(--transicao-suave);
+  display: inline-block;
 }
 
 .footer-links a:hover {
   color: var(--cor-dourado);
-  transform: translateX(4px);
+  transform: translateX(6px);
+}
+
+/* ==========================================================================
+   CONTATO
+   ========================================================================== */
+
+.footer-contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .footer-contact-list li {
   display: flex;
   align-items: center;
   gap: var(--espacamento-sm);
-  font-size: 1.0rem;
-  font-family: var(--fonte-texto);
-  padding-bottom: var(--espacamento-sm);
+  font-size: 0.95rem;
+  margin-bottom: 0.7rem;
   color: var(--cor-texto-suave);
-}
-
-.footer-contact-list li a {
-  color: var(--cor-preto);
-  transition: var(--transicao-suave);
-}
-
-.footer-contact-list li a:hover {
-  color: var(--cor-rosa-hover);
 }
 
 .footer-contact-list svg {
   color: var(--cor-dourado);
+  font-size: 1.1rem;
 }
 
-/* =========================
-   RODAPÉ INFERIOR
-========================= */
+.footer-contact-list a {
+  color: var(--cor-preto);
+  text-decoration: none;
+}
+
+.footer-contact-list a:hover {
+  color: var(--cor-rosa);
+}
+
+/* ==========================================================================
+   FOOTER BOTTOM
+   ========================================================================== */
+
 .footer-bottom {
   border-top: 1px solid var(--cor-dourado);
   padding-top: var(--espacamento-md);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: var(--espacamento-sm);
   flex-wrap: wrap;
-  margin-top: var(--espacamento-md);
 }
 
 .footer-bottom p {
@@ -207,32 +239,34 @@
   color: var(--cor-texto-suave);
 }
 
+/* ❤️ coração animado */
 .footer-love {
   display: flex;
   align-items: center;
-  gap: var(--espacamento-xs);
-  color: var(--cor-preto);
+  gap: 6px;
 }
 
 .heart-icon {
   color: var(--cor-rosa);
-  animation: heartbeat 1.5s ease-in-out infinite;
+  animation: heartbeat 1.4s ease-in-out infinite;
 }
 
 @keyframes heartbeat {
   0%, 100% { transform: scale(1); }
-  25% { transform: scale(1.15); }
+  25% { transform: scale(1.2); }
   50% { transform: scale(1); }
-  75% { transform: scale(1.1); }
+  75% { transform: scale(1.15); }
 }
 
-/* =========================
+/* ==========================================================================
    RESPONSIVO
-========================= */
+   ========================================================================== */
+
 @media (max-width: 1024px) {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
+
   .footer-about {
     grid-column: 1 / -1;
   }
@@ -241,11 +275,38 @@
 @media (max-width: 768px) {
   .footer-grid {
     grid-template-columns: 1fr;
-    gap: var(--espacamento-md);
+    gap: var(--espacamento-lg);
+    text-align: center;
   }
+
+  .footer-logo {
+    justify-content: center;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  .footer-links a:hover {
+    transform: none;
+  }
+
   .footer-bottom {
     flex-direction: column;
-    gap: var(--espacamento-xs);
-    text-align: left;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: var(--espacamento-lg) var(--espacamento-sm);
+  }
+
+  .footer-title {
+    font-size: 1rem;
+  }
+
+  .footer-description {
+    font-size: 0.9rem;
   }
 }

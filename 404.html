@@ -5,14 +5,15 @@
 
     <script>
       const base = "/FabianaEstetica";
-      const path = window.location.pathname;
 
-      // evita loop infinito
-      if (path === base || path === base + "/") {
-        window.location.replace(base + "/");
-      } else {
-        window.location.replace(base + "/");
-      }
+      // pega a URL completa que o usuário tentou acessar
+      const path = window.location.pathname + window.location.search + window.location.hash;
+
+      // salva a rota real
+      sessionStorage.setItem("redirect", path);
+
+      // redireciona para o index
+      window.location.replace(base + "/");
     </script>
   </head>
   <body></body>
