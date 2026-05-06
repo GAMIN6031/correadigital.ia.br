@@ -1,30 +1,32 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="pt-br">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
+
+    <!-- Evita cache estranho -->
+    <meta http-equiv="cache-control" content="no-cache" />
+
+    <title>Redirecionando...</title>
+
     <script>
       (function () {
-        const path =
-          window.location.pathname +
-          window.location.search +
-          window.location.hash;
+        // pega o caminho que o usuário tentou acessar
+        const path = window.location.pathname;
 
-        // salva rota completa
-        sessionStorage.setItem("redirectPath", path);
+        // nome do seu projeto/subpasta no GitHub Pages
+        const base = "/FabianaEstetica";
 
-        // quebra o path em partes
-        const parts = window.location.pathname.split("/").filter(Boolean);
-
-        // se tiver subpasta (cliente)
-        if (parts.length > 0) {
-          const base = "/" + parts[0] + "/";
-          window.location.replace(base);
+        // evita loop infinito
+        if (path.startsWith(base)) {
+          window.location.replace(base + "/");
         } else {
-          // raiz
           window.location.replace("/");
         }
       })();
     </script>
   </head>
-  <body></body>
+
+  <body>
+    <p>Redirecionando...</p>
+  </body>
 </html>
