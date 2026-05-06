@@ -1,0 +1,263 @@
+/* ==========================================================================
+   SEÇÃO SERVIÇOS — Premium Responsivo
+   ========================================================================== */
+
+.servicos-wrapper {
+  position: relative;
+  padding: var(--espacamento-2xl) var(--espacamento-md);
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+
+  border-radius: var(--radius-lg);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.servicos-header {
+  text-align: center;
+  margin-bottom: var(--espacamento-2xl);
+}
+
+.servicos-subtitle {
+  font-family: var(--fonte-subtitulo);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--cor-texto-muted);
+  margin-bottom: 0.8rem;
+}
+
+.servicos-title {
+  font-family: var(--fonte-titulo);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--cor-rosa);
+  position: relative;
+}
+
+/* linha dourada elegante */
+
+.servicos-title::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+
+  background: var(--gradiente-dourado);
+
+  margin: 0.8rem auto 0;
+  border-radius: var(--radius-sm);
+}
+
+.servicos-highlight {
+  color: var(--cor-dourado);
+  font-weight: 800;
+}
+
+.servicos-description {
+  font-family: var(--fonte-texto);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  color: var(--cor-texto-suave);
+  line-height: 1.6;
+
+  max-width: 700px;
+  margin: 0 auto var(--espacamento-xl);
+}
+
+/* ==========================================================================
+   GRID
+   ========================================================================== */
+
+.servicos-grid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+
+  gap: clamp(1rem, 2vw, 1.5rem);
+
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ==========================================================================
+   CARD WRAPPER
+   ========================================================================== */
+
+.servico-card-wrapper {
+  display: flex;
+}
+
+/* ==========================================================================
+   CARD
+   ========================================================================== */
+
+.servico-card {
+  width: 100%;
+
+  background: var(--vidro-bg);
+  border: 1px solid var(--vidro-borda);
+  border-radius: var(--radius-md);
+
+  box-shadow: var(--sombra-sm);
+
+  padding: clamp(1rem, 2vw, 1.4rem);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  gap: 0.8rem;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s ease,
+    border 0.3s ease;
+
+  opacity: 0;
+  transform: translateY(40px);
+
+  animation: servicoFadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--index) * 0.15s);
+
+  will-change: transform, opacity;
+}
+
+/* hover */
+
+.servico-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: var(--sombra-lg);
+  border-color: rgba(201, 166, 70, 0.4);
+}
+
+/* brilho suave */
+
+.servico-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at top left,
+    rgba(201, 166, 70, 0.12),
+    transparent 60%
+  );
+
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.servico-card:hover::before {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   ÍCONE
+   ========================================================================== */
+
+.servico-card svg {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  color: var(--cor-dourado);
+
+  transition: transform 0.4s ease, color 0.3s ease;
+}
+
+.servico-card:hover svg {
+  transform: rotate(-6deg) scale(1.1);
+  color: var(--cor-rosa);
+}
+
+/* ==========================================================================
+   BADGE
+   ========================================================================== */
+
+.servico-card .badge {
+  align-self: flex-start;
+
+  background: var(--cor-rosa);
+  color: var(--cor-branco);
+
+  font-size: clamp(0.65rem, 2vw, 0.75rem);
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  padding: 0.35rem 0.8rem;
+
+  border-radius: var(--radius-sm);
+
+  letter-spacing: 0.08em;
+
+  transition: var(--transicao-suave);
+}
+
+.servico-card:hover .badge {
+  background: var(--gradiente-dourado);
+}
+
+/* ==========================================================================
+   ANIMAÇÃO
+   ========================================================================== */
+
+@keyframes servicoFadeUp {
+
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+/* ==========================================================================
+   RESPONSIVO
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+
+  .servicos-description {
+    font-size: 0.95rem;
+    max-width: 90%;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .servicos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .servico-card {
+    padding: 1rem;
+  }
+
+  .servico-card svg {
+    font-size: 1.4rem;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .servicos-wrapper {
+    padding: var(--espacamento-lg) var(--espacamento-sm);
+  }
+
+  .servicos-description {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+}

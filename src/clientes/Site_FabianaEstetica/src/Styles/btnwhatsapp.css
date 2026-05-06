@@ -1,0 +1,93 @@
+/* --- Botão WhatsApp Flutuante (Nível Pleno) --- */
+:root {
+  --wa-color: #25D366;
+  --wa-hover: #20ba56;
+  --sombra-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --sombra-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+.whatsapp-link {
+  position: fixed;
+  bottom: clamp(1.5rem, 5vw, 2.5rem);
+  right: clamp(1.5rem, 5vw, 2.5rem);
+  z-index: 9999;
+  text-decoration: none;
+  
+  /* Container cuida da flutuação suave */
+  animation: float 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.whatsapp-btn {
+  background-color: var(--wa-color);
+  color: white; /* Cor do ícone FaWhatsapp */
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  box-shadow: var(--sombra-lg);
+  border: 2px solid white; 
+  
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+/* Garante que o ícone do React Icons se comporte bem */
+.whatsapp-icon-svg {
+  font-size: 32px; /* Caso não passe via prop size */
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));
+}
+
+/* Interação Refinada */
+.whatsapp-btn:hover {
+  transform: scale(1.1) rotate(8deg);
+  background-color: var(--wa-hover);
+  box-shadow: var(--sombra-xl);
+}
+
+.whatsapp-btn:active {
+  transform: scale(0.95);
+}
+
+/* Efeito Ping (Pulsação) */
+.whatsapp-btn::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background-color: var(--wa-color);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.4;
+  animation: pulse-ring 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* --- Keyframes --- */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  80%, 100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* --- Responsividade --- */
+@media (max-width: 480px) {
+  .whatsapp-btn {
+    width: 56px;
+    height: 56px;
+  }
+  .whatsapp-icon-svg {
+    font-size: 28px;
+  }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-link { animation: none !important; }
+  .whatsapp-btn::after { display: none; }
+}

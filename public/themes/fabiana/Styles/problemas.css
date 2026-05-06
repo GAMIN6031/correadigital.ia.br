@@ -1,0 +1,137 @@
+/* ==========================================================================
+   SEÇÃO PROBLEMAS — Clínica de Estética Catarino
+   ========================================================================== */
+
+.problemas {
+  padding: var(--espacamento-2xl) var(--espacamento-md);
+  background: var(--cor-fundo-1);
+  color: var(--cor-texto);
+}
+
+.problemas__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =========================
+   Cabeçalho
+========================= */
+.problemas__header {
+  text-align: center;
+  margin-bottom: var(--espacamento-xl);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.problemas__subtitle {
+  font-size: var(--text-base);
+  font-family: var(--fonte-subtitulo);
+  color: var(--cor-texto-suave);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--espacamento-sm);
+}
+
+.problemas__title {
+  font-family: var(--fonte-titulo);
+  font-size: var(--text-2xl);
+  font-weight: bold;
+  color: var(--cor-rosa);
+  position: relative;
+  display: inline-block;
+}
+
+.problemas__title .highlight {
+  color: var(--cor-dourado);
+}
+
+/* =========================
+   Lista de problemas
+========================= */
+.problemas__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--espacamento-lg);
+  list-style: none;
+  padding: 0;
+  margin-bottom: var(--espacamento-xl);
+}
+
+.problemas__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--espacamento-md);
+  background: var(--cor-cinza-claro);
+  padding: var(--espacamento-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--sombra-sm);
+  transition: var(--transicao-suave);
+  animation: fadeInUp 0.8s ease both;
+  cursor: pointer;
+}
+
+.problemas__item:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--sombra-md);
+  background: var(--cor-nude);
+}
+
+.problemas__icon {
+  font-size: 1.8rem;
+  color: var(--cor-dourado);
+  flex-shrink: 0;
+  transition: var(--transicao-suave);
+}
+
+.problemas__item:hover .problemas__icon {
+  transform: rotate(-10deg) scale(1.2);
+  color: var(--cor-rosa-hover);
+}
+
+.problemas__text {
+  font-weight: 600;
+  font-family: var(--fonte-texto);
+  color: var(--cor-texto);
+  line-height: 1.4;
+}
+
+/* =========================
+   Solução
+========================= */
+.problemas__solution {
+  text-align: center;
+  font-size: var(--text-xl);
+  font-weight: bold;
+  color: var(--cor-dourado);
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+/* =========================
+   Responsividade
+========================= */
+@media (max-width: 992px) {
+  .problemas__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .problemas {
+    padding: var(--espacamento-xl) var(--espacamento-sm);
+  }
+
+  .problemas__title {
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+  }
+
+  .problemas__list {
+    grid-template-columns: 1fr;
+  }
+
+  .problemas__item {
+    padding: var(--espacamento-md);
+  }
+
+  .problemas__icon {
+    font-size: 1.5rem;
+  }
+}
