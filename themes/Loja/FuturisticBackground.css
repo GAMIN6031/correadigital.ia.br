@@ -1,0 +1,108 @@
+/* =========================
+BACKGROUND FUTURISTA
+========================= */
+
+#pagina-sobre{
+  position: relative;
+  min-height: 100vh;
+}
+
+.bg-futuristic{
+  position: fixed; /* fixa no fundo da tela */
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+
+  overflow:hidden;
+
+  z-index:-1;
+
+  pointer-events:none; /* não interfere no clique */
+}
+
+/* =========================
+GRID TECNOLÓGICO
+========================= */
+
+.grid-overlay{
+
+  position:absolute;
+  inset:0;
+
+  width:100%;
+  height:100%;
+
+  background-image:
+  linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+
+  background-size:60px 60px;
+
+  opacity:.4;
+
+  animation:gridMove 25s linear infinite;
+}
+
+/* =========================
+ORBES DE ENERGIA
+========================= */
+
+.energy-orb{
+  position:absolute;
+
+  width:400px;
+  height:400px;
+
+  border-radius:50%;
+
+  opacity:.4;
+}
+
+.orb1{
+  background:#00e5ff;
+  top:-100px;
+  left:-100px;
+  animation:orbMove 18s infinite alternate;
+}
+
+.orb2{
+  background:#7c4dff;
+  bottom:-120px;
+  right:-100px;
+  animation:orbMove 20s infinite alternate;
+}
+
+.orb3{
+  background:#00ffaa;
+  top:50%;
+  left:40%;
+  animation:orbMove 25s infinite alternate;
+}
+
+/* =========================
+PARTÍCULAS OTIMIZADAS
+========================= */
+
+.particles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #00e5ff;
+  border-radius: 50%;
+  opacity: 0.6;
+
+  /* Usando transform em vez de left/top */
+  transform: translateX(var(--randomX, 0%));
+
+  /* Animação mais leve */
+  animation: particleFloat 12s linear infinite;
+}
+
