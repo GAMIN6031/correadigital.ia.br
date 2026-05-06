@@ -1,32 +1,19 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
   <head>
     <meta charset="UTF-8" />
 
-    <!-- Evita cache estranho -->
-    <meta http-equiv="cache-control" content="no-cache" />
-
-    <title>Redirecionando...</title>
-
     <script>
-      (function () {
-        // pega o caminho que o usuário tentou acessar
-        const path = window.location.pathname;
+      // pega a URL inteira
+      const path = window.location.pathname;
 
-        // nome do seu projeto/subpasta no GitHub Pages
-        const base = "/FabianaEstetica";
-
-        // evita loop infinito
-        if (path.startsWith(base)) {
-          window.location.replace(base + "/");
-        } else {
-          window.location.replace("/");
-        }
-      })();
+      // se não estiver na pasta correta, manda pra base
+      if (!path.includes("/FabianaEstetica")) {
+        window.location.replace("/FabianaEstetica/");
+      } else {
+        window.location.replace(path);
+      }
     </script>
   </head>
-
-  <body>
-    <p>Redirecionando...</p>
-  </body>
+  <body></body>
 </html>
