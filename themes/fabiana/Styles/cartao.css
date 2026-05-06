@@ -1,0 +1,239 @@
+/* ==========================================================================
+   CARTÃO PREMIUM — Clínica Catarino (Rosa & Dourado)
+   ========================================================================== */
+
+.cartao {
+  background: var(--gradiente-suave);
+  padding: var(--espacamento-xl) var(--espacamento-lg);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--vidro-borda);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+
+  box-shadow: var(--sombra-sm);
+  backdrop-filter: blur(6px);
+
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+}
+
+/* brilho premium */
+.cartao::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at top left,
+    rgba(201, 166, 70, 0.12),
+    transparent 50%
+  );
+
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+/* hover elegante */
+.cartao:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--sombra-lg);
+  border-color: rgba(201, 166, 70, 0.35);
+}
+
+.cartao:hover::before {
+  opacity: 1;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.cartao__header {
+  margin-bottom: var(--espacamento-md);
+  text-align: center;
+}
+
+.cartao__icon-wrapper {
+  color: var(--cor-dourado);
+  background: var(--cor-nude);
+
+  width: clamp(52px, 6vw, 64px);
+  height: clamp(52px, 6vw, 64px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--radius-xl);
+  margin: 0 auto var(--espacamento-sm);
+
+  transition: var(--transicao-suave);
+}
+
+/* ícone animado */
+.cartao:hover .cartao__icon-wrapper {
+  color: white;
+  transform: scale(1.08);
+  box-shadow: 0 8px 20px rgba(201, 166, 70, 0.25);
+}
+
+.cartao__icon-wrapper svg {
+  width: clamp(26px, 5vw, 32px);
+  height: clamp(26px, 5vw, 32px);
+}
+
+.cartao__title {
+  font-family: var(--fonte-titulo);
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  color: var(--cor-texto);
+  line-height: 1.3;
+  font-weight: 700;
+
+  margin-bottom: var(--espacamento-sm);
+
+  transition: var(--transicao-suave);
+}
+
+.cartao:hover .cartao__title {
+  color: var(--cor-rosa);
+}
+
+/* =========================
+   BODY
+========================= */
+
+.cartao__body {
+  flex-grow: 1;
+  margin-bottom: var(--espacamento-md);
+  text-align: center;
+}
+
+.cartao__description {
+  font-family: var(--fonte-texto);
+  color: var(--cor-texto-suave);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  line-height: 1.6;
+
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.cartao__footer {
+  padding-top: var(--espacamento-sm);
+  border-top: 1px solid var(--vidro-borda);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cartao__badge {
+  font-family: var(--fonte-texto);
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  color: var(--cor-dourado);
+  background: var(--cor-nude);
+
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-md);
+
+  transition: var(--transicao-suave);
+}
+
+.cartao:hover .cartao__badge {
+  background: var(--gradiente-dourado);
+  color: white;
+}
+
+/* seta */
+
+.cartao__arrow {
+  display: flex;
+  align-items: center;
+
+  color: var(--cor-rosa);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.cartao:hover .cartao__arrow {
+  transform: translateX(4px);
+  color: var(--cor-rosa-hover);
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 1024px) {
+
+  .cartao {
+    padding: var(--espacamento-lg) var(--espacamento-md);
+  }
+
+  .cartao__title {
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+  }
+
+  .cartao__description {
+    font-size: 0.9rem;
+    max-width: 95%;
+  }
+
+}
+
+@media (max-width: 768px) {
+
+  .cartao {
+    padding: var(--espacamento-md);
+  }
+
+  .cartao__title {
+    font-size: 1.1rem;
+  }
+
+  .cartao__description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .cartao__icon-wrapper {
+    width: 48px;
+    height: 48px;
+  }
+
+  .cartao__icon-wrapper svg {
+    width: 24px;
+    height: 24px;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .cartao {
+    padding: var(--espacamento-sm);
+  }
+
+  .cartao__title {
+    font-size: 1rem;
+  }
+
+  .cartao__description {
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .cartao__badge {
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+}
