@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
 
     <script>
-      // pega a URL inteira
+      const base = "/FabianaEstetica";
       const path = window.location.pathname;
 
-      // se não estiver na pasta correta, manda pra base
-      if (!path.includes("/FabianaEstetica")) {
-        window.location.replace("/FabianaEstetica/");
+      // evita loop infinito
+      if (path === base || path === base + "/") {
+        window.location.replace(base + "/");
       } else {
-        window.location.replace(path);
+        window.location.replace(base + "/");
       }
     </script>
   </head>
