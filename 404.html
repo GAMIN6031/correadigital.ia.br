@@ -1,20 +1,21 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <script>
+    // pega a URL completa
+    const path = window.location.pathname;
 
-    <script>
-      const base = "/FabianaEstetica";
-
-      // pega a URL completa que o usuário tentou acessar
-      const path = window.location.pathname + window.location.search + window.location.hash;
-
-      // salva a rota real
-      sessionStorage.setItem("redirect", path);
-
-      // redireciona para o index
-      window.location.replace(base + "/");
-    </script>
-  </head>
-  <body></body>
+    // se o usuário tentou acessar /FabianaEstetica
+    if (path.startsWith("/FabianaEstetica")) {
+      // transforma em hash router
+      window.location.replace("/#/FabianaEstetica" + window.location.search + window.location.hash);
+    } else {
+      // fallback genérico: manda para home com hash
+      window.location.replace("/#/");
+    }
+  </script>
+</head>
+<body>
+</body>
 </html>
