@@ -75,8 +75,6 @@
 /* Layout principal */
 main {
   min-height: 100vh;
-    background: var(--gradiente-suave);
-
   display: flex;
   flex-direction: column;
 }
