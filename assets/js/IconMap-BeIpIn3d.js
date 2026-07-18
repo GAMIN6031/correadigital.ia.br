@@ -1,1 +1,0 @@
-import{_ as a,a as s,d as o,g as F,l as p,n as r,o as e,p as i,s as t,t as l,u as g,v as m}from"./fa-Y5vMSUFZ.js";import{t as n}from"./fa6-B4cz-gpl.js";var d={FaWhatsapp:m,FaInstagram:o,FaGoogle:t,FaMapMarkedAlt:i,FaFacebook:s,FaTools:a,FaBuilding:r,FaHome:p,FaBriefcase:l,FaInfoCircle:g,FaPix:n,FaShoppingBag:F,FaGlobe:e};export{d as iconMap};
