@@ -1,0 +1,1 @@
+var a="5511952973113",e=`tel:+${a}`,r="https://www.google.com/maps/search/?api=1&query=Praia%20Grande",o=`https://wa.me/${a}?text=${encodeURIComponent("Olá! Gostaria de saber sobre disponibilidade e valores para alugar a casa.")}`;export{r as LOCATION_URL,a as PHONE_NUMBER,e as PHONE_URL,o as WHATSAPP_URL};

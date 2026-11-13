@@ -1,0 +1,1 @@
+import{A as a,L as s,P as o,T as F,a as i,b as r,g as e,h as p,i as m,m as t,v as g,y as l}from"./fa-NJPtxxRF.js";import{t as n}from"./fa6-BdSScIyP.js";var b={FaWhatsapp:s,FaInstagram:r,FaGoogle:e,FaMapMarkedAlt:F,FaFacebook:t,FaTools:o,FaBuilding:i,FaHome:g,FaBriefcase:m,FaInfoCircle:l,FaPix:n,FaShoppingBag:a,FaGlobe:p};export{b as iconMap};
