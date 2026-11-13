@@ -3,17 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <script>
-    // pega a URL completa
-    const path = window.location.pathname;
+    const requestedPath =
+      window.location.pathname +
+      window.location.search +
+      window.location.hash;
 
-    // se o usuário tentou acessar /FabianaEstetica
-    if (path.startsWith("/FabianaEstetica")) {
-      // transforma em hash router
-      window.location.replace("/#/FabianaEstetica" + window.location.search + window.location.hash);
-    } else {
-      // fallback genérico: manda para home com hash
-      window.location.replace("/#/");
-    }
+    window.location.replace(
+      `${window.location.origin}/?p=${encodeURIComponent(requestedPath)}`,
+    );
   </script>
 </head>
 <body>
