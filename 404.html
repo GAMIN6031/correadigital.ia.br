@@ -3,13 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <script>
-    const requestedPath =
-      window.location.pathname +
-      window.location.search +
-      window.location.hash;
+    const knownRoutes = [
+      "/",
+      "/CorreaDigital",
+      "/CorreaDigital/linkbio",
+    ];
+
+    function normalizePath(path) {
+      return path
+        .split("/")
+        .filter(Boolean)
+        .map((segment) =>
+          segment
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toLowerCase()
+            .replace(/[^a-z0-9]/g, ""),
+        );
+    }
+
+    function editDistance(left, right) {
+      const previousRow = Array.from(
+        { length: right.length + 1 },
+        (_, index) => index,
+      );
+
+      for (let leftIndex = 1; leftIndex <= left.length; leftIndex += 1) {
+        let diagonal = previousRow[0];
+        previousRow[0] = leftIndex;
+
+        for (let rightIndex = 1; rightIndex <= right.length; rightIndex += 1) {
+          const previous = previousRow[rightIndex];
+
+          previousRow[rightIndex] = Math.min(
+            previousRow[rightIndex] + 1,
+            previousRow[rightIndex - 1] + 1,
+            diagonal + (left[leftIndex - 1] === right[rightIndex - 1] ? 0 : 1),
+          );
+          diagonal = previous;
+        }
+      }
+
+      return previousRow[right.length];
+    }
+
+    function getRouteDistance(requestedSegments, route) {
+      const routeSegments = normalizePath(route);
+
+      if (requestedSegments.length !== routeSegments.length) {
+        return null;
+      }
+
+      let distance = 0;
+
+      for (let index = 0; index < routeSegments.length; index += 1) {
+        const segmentDistance = editDistance(
+          requestedSegments[index],
+          routeSegments[index],
+        );
+        const maxSegmentDistance = Math.max(
+          1,
+          Math.floor(routeSegments[index].length * 0.2),
+        );
+
+        if (segmentDistance > maxSegmentDistance) {
+          return null;
+        }
+
+        distance += segmentDistance;
+      }
+
+      return distance;
+    }
+
+    const requestedSegments = normalizePath(window.location.pathname);
+    const matchingRoutes = knownRoutes
+      .filter((route) => route !== "/")
+      .map((route) => ({
+        route,
+        distance: getRouteDistance(requestedSegments, route),
+      }))
+      .filter((match) => match.distance !== null)
+      .sort((left, right) => left.distance - right.distance);
+
+    const targetPath = matchingRoutes[0]?.route || "/";
+    const requestedUrl =
+      targetPath + window.location.search + window.location.hash;
 
     window.location.replace(
-      `${window.location.origin}/?p=${encodeURIComponent(requestedPath)}`,
+      `${window.location.origin}/?p=${encodeURIComponent(requestedUrl)}`,
     );
   </script>
 </head>
